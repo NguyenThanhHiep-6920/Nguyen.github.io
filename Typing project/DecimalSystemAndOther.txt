@@ -1,0 +1,45 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+
+int hodnotaVeDeci(string str,int b);
+string hodnotaVeJinem(int num, int base);
+int main() {
+	string str = "A";
+	cout <<"A with base 16 is "<< hodnotaVeDeci(str, 16)<<" with base 10"<<endl;
+	cout << "10 with base 10 is " << hodnotaVeJinem(10,16)<< " with base 16";
+	return 0;
+}
+
+
+int hodnotaVeDeci(string str,int b) {
+	return stoi(str, 0, b);
+}
+string hodnotaVeJinem(int num, int base) {
+	string new_value;
+	int remainder;
+	while (num != 0) {
+		remainder = num % base;
+		num = num / base;
+		if (remainder > 9 && remainder < 16) {
+			new_value += char(remainder + 55);
+		}
+		else if (remainder < 9) {
+			new_value += to_string(remainder);
+		}
+	}
+	return new_value;
+}
+
+//// math-method convert from <10 base to decimal
+	//int b, base, temp;
+	//int i = 0, result = 0;
+	//temp = b;
+	//while (b != 0) {
+	//	result += (b % 10) * pow(base, i);
+	//	b = b / 10;
+	//	++i;
+	//}
+	//cout << temp << " in decimal is " << result;

@@ -1,0 +1,63 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+class CDil {
+private:
+	char m_Nazev[50];
+	int m_ID;
+public:
+	void SetNazev(const char* text) {
+		sprintf_s(m_Nazev, text);
+	}
+	void SetID(int id) {
+		m_ID = id;
+	}
+	char* GetNazev() {
+		return m_Nazev;
+	}
+	int GetID() {
+		return m_ID;
+	}
+	bool operator>(CDil& obj) {
+		if (m_ID > obj.m_ID) return true;
+		else return false;
+	}
+};
+
+int main() {
+	vector<CDil*> m_Soucastky;
+	int pocet;
+	printf("Zadej pocet: ");
+	scanf_s("%d", &pocet);
+	CDil* soucastka;
+
+	char text[50];
+	int id;
+	for (size_t i = 0; i < pocet; i++)
+	{
+		soucastka = new CDil();
+		printf("Zadej nazev:");
+		scanf_s("%s", &text,50);
+		soucastka->SetNazev(text);
+		printf("Zadej id:");
+		scanf_s("%d", &id);
+		soucastka->SetID(id);
+		m_Soucastky.push_back(soucastka);
+	}
+
+	for (size_t i = 0; i <= pocet; i++)
+	{
+		for (int j = i + 1; j < pocet; j++) {
+			if (m_Soucastky[i] > m_Soucastky[j]) {
+				CDil temp = *m_Soucastky[i];
+				*m_Soucastky[i] = *m_Soucastky[j];
+				*m_Soucastky[j] = temp;
+			}
+		}
+	}
+	for (size_t i = 0; i < pocet; i++)
+	{
+		printf("Dil id=%d nazev:%s\n", m_Soucastky[i]->GetID(), m_Soucastky[i]->GetNazev());
+	}
+	return 0;
+}

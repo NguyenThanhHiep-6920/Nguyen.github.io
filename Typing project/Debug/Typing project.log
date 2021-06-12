@@ -1,0 +1,5 @@
+﻿  Typing project.cpp
+D:\repos\Typing project\Typing project\Typing project.cpp(20,14): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+D:\repos\Typing project\Typing project\Typing project.cpp(20,17): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+D:\repos\Typing project\Typing project\Typing project.cpp(100,23): warning C4018: '<': signed/unsigned mismatch
+  Typing project.vcxproj -> D:\repos\Typing project\Debug\Typing project.exe
